@@ -1,0 +1,26 @@
+version: '3'
+services:
+  settlegram:
+    build: ./SettleGram
+    env_file:
+      - ./secrets.env
+    environment:
+        PYTHONUNBUFFERED: 1
+    depends_on:
+      - mongodb
+    networks:
+      - mynetwork
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./db-data:/data/db
+    networks:
+      - mynetwork
+
+volumes:
+  db-data:
+
+networks:
+  mynetwork:
