@@ -12,7 +12,6 @@ nuova_spesa = [{'LEMMA': {'IN': ['spesare', 'pagare', 'spendere', 'comprare']}, 
 disable_member = [{"LEMMA": {"IN": ["disable", "remove", "deactivate"]}}]
 enable_member = [{"LEMMA": {"IN": ["aggiungere", "attivare"]}}]
 # Type of phrases: show me balance, show me status, print status, generate status
-# ToDo it needs to be called with the @
 get_balance = [{"LEMMA": "balance"}]
 get_payments = [{"LEMMA": "payments"}]
 close_group = [{"LEMMA": "close"}]
@@ -97,8 +96,8 @@ def crea_nuova_spesa(doc):
                             expense['currency'] = 'euro' if child.is_currency else child.text
                             head = child
                             for child in head.children:
-                                if child.dep_ == 'nummod':
-                                    expense['amount'] = float(child.text)
+                                if child.dep_ in {'nummod', 'amod'}:
+                                    expense['amount'] = float(str(child.text).replace(',', '.'))
                         if child.dep_ == 'nsubj':
                             expense['who_paid'] = child.text
                         if child.dep_ == 'obl':

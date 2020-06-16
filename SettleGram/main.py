@@ -158,12 +158,14 @@ async def new_message(event: NewMessage):
                     #ToDo
                     pass
 
-    except MalformedMessage as err:
-        await tg_client.send_message(chat_id, "The message was malformed, retry")
+    except MalformedMessage:
+        await tg_client.send_message(chat_id, "The message was malformed: retry")
     except TelegramUserNotActive:
         await tg_client.send_message(chat_id, "One of the involved user is not anymore active in this group")
     except ClosedGroup:
         await tg_client.send_message(chat_id, "The group is closed to new expenses")
+    except KeyError:
+        await tg_client.send_message(chat_id, "The message was malformed, retry")
 
 
 @tg_client.on(events.CallbackQuery)
