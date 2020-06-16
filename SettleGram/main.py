@@ -2,6 +2,7 @@ from telethon import TelegramClient, events
 from telethon.tl.custom import Button
 from telethon.errors.rpcerrorlist import PeerIdInvalidError
 from telethon.events import NewMessage, CallbackQuery, ChatAction
+import os
 import spacy
 from spacy.matcher import Matcher
 import logging

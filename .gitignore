@@ -1,2 +1,4 @@
 __pycache__
 .idea
+db-data
+secrets.env

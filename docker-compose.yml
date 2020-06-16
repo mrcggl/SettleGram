@@ -2,8 +2,10 @@ version: '3'
 services:
   settlegram:
     build: ./SettleGram
+    restart: always 
     env_file:
       - ./secrets.env
+    command: python -u main.py
     environment:
         PYTHONUNBUFFERED: 1
     depends_on:
@@ -21,6 +23,7 @@ services:
 
 volumes:
   db-data:
+   external: true
 
 networks:
   mynetwork:
