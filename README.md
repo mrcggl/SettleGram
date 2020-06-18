@@ -5,7 +5,18 @@ in natural language, and internally processed by NLP tools. The bot is integrate
 * If a user leaves a group or is banned, the bot will consider him inactive from now on and it won't add it to further common expenses
 * If a user joins or is added to a group, the bot will consider him for new expenses
 
+At this moment, the NLP processing is only working for Italian. The bot has access to the names and username of the members of a group and therefore will be able to understand when you refer to someone by either methods. The following are same examples of common expenses which are well-understood by the bot:
 
+* Francesca ha speso 102 € per la spesa per tutti
+* Edoardo ha speso 25.2 euro per il pranzo da dividere tra lui, Marco, Francesca e Giulia
+* Ho speso 4 euro per i caffè di Edoardo e Chiara
+* Chiara ha pagato 35,5 € per la cena da dividere tra lei, Marco e Giulia
+* Ho pagato 15 euro per la pizza da dividere tra me e Francesca
+
+If you want to see the balance just send the message (if you are using the public instance):
+* @settlegrambot balance 
+
+I will work on the english version soon, stay tuned! (or follow the repo!)
 ### Why I wrote this tool
 I wrote this bot for my own needs. I am lucky enough to have a sizeable group of close friends,
 and we travel together few times a year. Moreover, we all use Telegram for messaging. So far, in order
@@ -18,6 +29,7 @@ functionality directly within the Telegram group we usually create to organize o
 ### Technologies used 
 The bot leverages:
 * [Telethon](https://github.com/LonamiWebs/Telethon): a Python-3 library to interact with Telegram Client API
+* [Spacy](https://spacy.io): a Python-3 library with amazing tools to perform NLP processing. 
 * MongoDB: to save the group state
 * Docker: for easy deployment on a cloud instance
 
