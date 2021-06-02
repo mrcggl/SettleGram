@@ -21,5 +21,5 @@ srsly==1.0.2
 Telethon==1.13.0
 thinc==7.4.0
 tqdm==4.46.0
-urllib3==1.25.9
+urllib3==1.26.5
 wasabi==0.6.0
